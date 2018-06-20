@@ -44,6 +44,7 @@ const MaterialDialog = ({
   okLabel,
   cancelLabel,
   children,
+  disableOk,
 }) => (
   <Modal
     animationType={'fade'}
@@ -94,7 +95,7 @@ const MaterialDialog = ({
                     />
                     <ActionButton
                       testID="dialog-ok-button"
-                      colorAccent={colorAccent}
+                      colorAccent={disableOk ? "#EEE" : colorAccent}
                       onPress={onOk}
                       label={okLabel}
                     />

@@ -39,6 +39,11 @@ export default class MultiPickerMaterialDialog extends Component {
     });
     const dataSource = this.state.dataSource.cloneWithRows(rows);
     this.setState({ dataSource, rows });
+    setTimeout(() => {
+      this.props.onItemClick({
+        selectedItems: this.state.rows.filter(row => row.selected),
+      });
+    }, 1);
   }
 
   renderRow = (row, sectionID, rowID) => (
@@ -62,6 +67,7 @@ export default class MultiPickerMaterialDialog extends Component {
         title={this.props.title}
         titleColor={this.props.titleColor}
         colorAccent={this.props.colorAccent}
+        disableOk={this.props.disableOk}
         visible={this.props.visible}
         okLabel={this.props.okLabel}
         scrolled={this.props.scrolled}
@@ -110,9 +116,11 @@ MultiPickerMaterialDialog.propTypes = {
   colorAccent: PropTypes.string,
   onCancel: PropTypes.func.isRequired,
   onOk: PropTypes.func.isRequired,
+  onItemClick: PropTypes.func.isRequired,
   cancelLabel: PropTypes.string,
   okLabel: PropTypes.string,
   scrolled: PropTypes.bool,
+  disableOk: PropTypes.bool,
 };
 
 MultiPickerMaterialDialog.defaultProps = {
@@ -123,4 +131,5 @@ MultiPickerMaterialDialog.defaultProps = {
   cancelLabel: undefined,
   okLabel: undefined,
   scrolled: false,
+  disableOk: false,
 };
