@@ -95,7 +95,7 @@ const MaterialDialog = ({
                     />
                     <ActionButton
                       testID="dialog-ok-button"
-                      colorAccent={disableOk ? "#EEE" : colorAccent}
+                      colorAccent={disableOk ? "#b3b3b3" : colorAccent}
                       onPress={onOk}
                       label={okLabel}
                     />
